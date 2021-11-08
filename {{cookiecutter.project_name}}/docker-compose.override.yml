@@ -1,0 +1,45 @@
+---
+version: "3.9"
+
+services:
+  nginx:
+    profiles:
+      - proxy
+
+  # redis:
+  #   ports:
+  #     - ${REDIS_PORT:-6379}:6379
+
+  postgres:
+    ports:
+      - 5432:5432
+
+  pgadmin:
+    ports:
+      - 5050:5050
+
+  # worker:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile
+  #   environment:
+  #     - SERVER_NAME=${DOMAIN?Variable not set}
+  #     - SERVER_HOST=http://${DOMAIN?Variable not set}
+  #   volumes:
+  #     - ./backend:/app/:cached
+
+  # flower:
+  #   ports:
+  #     - 5555:5555
+
+  backend:
+    profiles:
+      - backend
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        FRONTEND_ENV: dev
+    profiles:
+      - frontend
