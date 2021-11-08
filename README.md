@@ -36,6 +36,21 @@ cookiecutter https://github.com/dbatten5/cookiecutter-fastapi-react-psql
 - `pytest` ready to go with sample test.
 - `ormar` installed for a `django`-flavoured `python` async ORM.
 
+## Features not included
+
+The following features were left out in favour of simplicity:
+
+- Celery/Flower/Redis - Not needed for simple projects, Celery can be easily
+replaced with background tasks.
+
+## Credits
+
+Inspired by existing FastAPI cookiecutters:
+
+- [gaganpreet/fastapi-starter](https://github.com/gaganpreet/fastapi-starter)
+- [tiangolo/full-stack-fastapi-postgresql](https://github.com/tiangolo/full-stack-fastapi-postgresql)
+- [Buuntu/fastapi-react](https://github.com/Buuntu/fastapi-react)
+
 ## Licence
 
 MIT
