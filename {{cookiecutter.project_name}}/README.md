@@ -20,7 +20,7 @@ and more...
 Start a local deployment with `docker-compose`
 
 ```bash
-docker-compose -f docker-compose.yml up
+docker-compose -f docker-compose.yml up -d
 
 # run database migration
 docker-compose exec backend alembic upgrade head

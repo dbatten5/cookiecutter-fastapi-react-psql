@@ -17,6 +17,9 @@ RUN apt update && \
 
 COPY --from=requirements-stage /tmp/requirements.txt /code/requirements.txt
 
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt \
+  pytest \
+  pytest-dotenv \
+  requests
 
 COPY . /code
