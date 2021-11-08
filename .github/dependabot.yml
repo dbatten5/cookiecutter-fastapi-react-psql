@@ -1,0 +1,26 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "npm"
+    directory: "{{cookiecutter.project_name}}/frontend/"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "docker"
+    directory: "{{cookiecutter.project_name}}/frontend/"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "docker"
+    directory: "{{cookiecutter.project_name}}/backend/"
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "pip"
+    directory: "{{cookiecutter.project_name}}/backend/"
+    schedule:
+      interval: "daily"
