@@ -12,9 +12,6 @@ services:
       - backend
       - frontend
 
-  # redis:
-  #   image: redis
-
   postgres:
     image: postgres:13
     restart: always
@@ -38,23 +35,6 @@ services:
       - .env
     volumes:
       - pgadmin:/var/lib/pgadmin
-
-  # worker:
-  #   command: celery worker -A app.worker -l info -Q main-queue -c 1
-  #   env_file:
-  #     - .env
-  #   environment:
-  #     - SERVER_NAME=${DOMAIN?Variable not set}
-  #     - SERVER_HOST=https://${DOMAIN?Variable not set}
-  #   depends_on:
-  #     - postgres
-  #     - redis
-
-  # flower:
-  #   image: mher/flower
-  #   command: celery flower --broker=redis://redis:6379/0 --port=5555
-  #   depends_on:
-  #     - queue
 
   backend:
     build:
