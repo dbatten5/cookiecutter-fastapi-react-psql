@@ -7,3 +7,7 @@ services:
 
   frontend:
     image: "{{ cookiecutter.project_name }}-frontend:latest"
+
+  pgadmin:
+    profiles:
+      - pgadmin
