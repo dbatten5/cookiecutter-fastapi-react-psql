@@ -17,16 +17,16 @@ and more...
 
 ## Local deployment
 
-Start a local deployment with `docker-compose`
+Start a local deployment with `docker compose`
 
 ```bash
-docker-compose -f docker-compose.yml up -d
+docker compose -f docker-compose.yml up -d
 
 # run database migration
-docker-compose exec backend alembic upgrade head
+docker compose exec backend alembic upgrade head
 
 # create database used for testing
-docker-compose exec postgres createdb {{cookiecutter.project_slug}}_test -U postgres
+docker compose exec postgres createdb {{cookiecutter.project_slug}}_test -U postgres
 ```
 
 Now you can navigate to the following URLs:
@@ -56,14 +56,14 @@ This project is set up to run the server and client locally for development
 purposes so commands, eg. `pytest` and `alembic`, can be run on the host
 machine using the virtual environment rather than in a docker container.
 
-Start the ancillary services with `docker-compose`:
+Start the ancillary services with `docker compose`:
 
 ```bash
 # stop the deployment started above
-docker-compose down
+docker compose down
 
 # start just the ancillary services
-docker-compose up -d
+docker compose up -d
 ```
 
 This will start:
@@ -86,6 +86,19 @@ source .venv/bin/activate
 # start the FastAPI server, accessible at localhost:8000
 uvicorn app.main:app --port 8000 --reload
 ```
+
+If you prefer to run the backend in a container, you can add a `--profile
+backend` option to `docker compose`:
+
+```bash
+docker compose --profile backend up -d
+```
+
+This will start:
+
+- `postgres`
+- `pgadmin` accessible on http://localhost:5050
+- `backend` accessible on http://localhost:{{cookiecutter.backend_port}}
 
 #### Tests
 
@@ -148,10 +161,10 @@ working as expected. To do so, run from the project root:
 
 ```bash
 # build the images locally
-docker-compose -f docker-compose.yml build
+docker compose -f docker-compose.yml build
 
 # start the appliction
-docker-compose -f docker-compose.yml up
+docker compose -f docker-compose.yml up
 ```
 
 ## Credits

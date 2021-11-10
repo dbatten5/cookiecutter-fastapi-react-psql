@@ -15,6 +15,14 @@ services:
       - 5050:5050
 
   backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: development
+    ports:
+      - 8000:{{cookiecutter.backend_port}}
+    volumes:
+      - ./backend:/{{cookiecutter.project_slug}}:cached
     profiles:
       - backend
 
