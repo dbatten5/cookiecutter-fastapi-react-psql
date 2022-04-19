@@ -1,4 +1,4 @@
-ARG APP_DIRECTORY=/{{cookiecutter.prokect_slug}}
+ARG APP_DIRECTORY=/{{cookiecutter.project_slug}}
 ARG ARG_POETRY_VERSION=1.1.11
 ARG PYTHON_VERSION=3.9.7
 
